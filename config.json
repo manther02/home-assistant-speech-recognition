@@ -1,0 +1,252 @@
+{
+    "wake_word" : "bobert",
+    "actual_language" : "en",
+    "languages": {
+        "en": {
+            "hmm": "langs/en/models/hmm",
+            "models": {
+                "full" : {
+                    "lm" : "langs/en/models/full/model.lm",
+                    "dic" : "langs/en/models/full/model.dic"
+                },
+                "min" : {
+                    "lm" : "langs/en/models/min/model.lm",
+                    "dic" : "langs/en/models/min/model.dic"
+                }
+            }
+        },
+        "pt": {
+            "hmm": "langs/pt/models/hmm",
+            "models": {
+                "full" : {
+                    "lm" : "langs/pt/models/full/model.lm",
+                    "dic" : "langs/pt/models/full/model.dic"
+                },
+                "min" : {
+                    "lm" : "langs/pt/models/min/model.lm",
+                    "dic" : "langs/pt/models/min/model.dic"
+                }
+            }
+        }
+    },
+    "modules" : [
+        {
+            "module" : "this",
+            "class" : "this",
+            "extra_words" : {
+                "en" : [
+                    "one",
+                    "two",
+                    "three",
+                    "four",
+                    "five",
+                    "six",
+                    "seven",
+                    "eight",
+                    "nine",
+                    "ten",
+                    "eleven",
+                    "twelve",
+                    "thirteen",
+                    "fourteen",
+                    "fifteen",
+                    "sixteen",
+                    "seventeen",
+                    "eighteen",
+                    "nineteen",
+                    "twenty",
+                    "thirty",
+                    "forty",
+                    "fifty",
+                    "sixty",
+                    "seventy",
+                    "eighty",
+                    "ninety",
+                    "hundred",
+                    "thousand",
+                    "million"
+                ],
+                "pt" : [
+                    "um",
+                    "dois",
+                    "três",
+                    "quatro",
+                    "cinco",
+                    "seis",
+                    "sete",
+                    "oito",
+                    "nove",
+                    "dez",
+                    "onze",
+                    "doze",
+                    "treze",
+                    "catorze",
+                    "quinze",
+                    "dezasseis",
+                    "dezassete",
+                    "dezoito",
+                    "dezenove",
+                    "vinte",
+                    "trinta",
+                    "quarenta",
+                    "cinquenta",
+                    "sessenta",
+                    "setenta",
+                    "oitenta",
+                    "noventa",
+                    "cem",
+                    "mil",
+                    "milhão",
+                    "milhões"
+                ]
+            },
+            "listener" : "",
+            "actions" : [
+                {
+                    "commands" : {
+                        "en": ["cancel", "stop", "ignore"],
+                        "pt": ["cancelar", "parar", "para", "ignora"]
+                    },
+                    "function" : "cancelListen",
+                    "actions" : []
+                },
+                {
+                    "commands" : {
+                        "en": ["change language", "switch language"],
+                        "pt": ["mudar língua", "mudar idioma", "trocar língua", "trocar idioma"]
+                    },
+                    "function" : "changeLanguage",
+                    "actions" : []
+                }
+            ]
+        },
+        {
+            "module" : "music-player",
+            "class" : "MusicPlayer",
+            "extra_words" : {
+                "en": [],
+                "pt": []
+            },
+            "listener" : "",
+            "actions" : [
+                {
+                    "commands" : {
+                        "en": ["play music", "play song", "play a music", "play a song", "play"],
+                        "pt": ["tocar música", "tocar uma música", "tocar", "ouvir música", "ouvir uma música", "ouvir"]
+                    },
+                    "function" : "play",
+                    "actions" : [
+                        {
+                            "commands" : {
+                                "en": ["resume music", "resume song", "resume", "play music", "play song", "play"],
+                                "pt": ["continuar música", "continuar", "tocar música", "tocar"]
+                            },
+                            "function" : "resume"
+                        },
+                        {
+                            "commands" : {
+                                "en": ["next music", "next song", "next"],
+                                "pt": ["próxima música", "próxima", "próximo"]
+                            },
+                            "function" : "next"
+                        },
+                        {
+                            "commands" : {
+                                "en": ["previous music", "previous song", "previous"],
+                                "pt": ["música anterior", "anterior"]
+                            },
+                            "function" : "previous"
+                        },
+                        {
+                            "commands" : {
+                                "en": ["pause music", "pause song", "pause"],
+                                "pt": ["pausar", "colocar em pausa", "pausar música", "pausa"]
+                            },
+                            "function" : "pause"
+                        },
+                        {
+                            "commands" : {
+                                "en": ["stop music", "stop playing", "stop"],
+                                "pt": ["parar música", "parar de tocar", "parar", "para"]
+                            },
+                            "function" : "stop"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "module" : "android-phone",
+            "class" : "AndroidPhone",
+            "extra_words" : {
+                "en": [],
+                "pt": []
+            },
+            "listener" : "android-phone-listener",
+            "actions" : [
+                {
+                    "commands" : {
+                        "en": ["decline call", "decline"],
+                        "pt": ["rejeitar chamada", "rejeitar", "desligar chamada", "desligar"]
+                    },
+                    "function" : "endCall",
+                    "actions" : []
+                },
+                {
+                    "commands" : {
+                        "en": ["answer call", "answer"],
+                        "pt": ["atender", "atender chamada"]
+                    },
+                    "function" : "answerCall",
+                    "actions" : []
+                },
+                {
+                    "commands" : {
+                        "en": ["make call", "make a call", "call"],
+                        "pt": ["fazer chamada", "ligar", "fazer uma chamada"]
+                    },
+                    "function" : "makeCall",
+                    "actions" : [
+                        {
+                            "commands" : {
+                                "en": ["end", "end call", "cancel", "no"],
+                                "pt": ["cancelar", "não", "terminar", "terminar chamada"]
+                            },
+                            "function" : "endCall"
+                        },
+                        {
+                            "commands" : {
+                                "en": ["yes", "of course"],
+                                "pt": ["sim", "claro"]
+                            },
+                            "function" : "startCall"
+                        }
+                    ]
+                },
+                {
+                    "commands" : {
+                        "en": ["send sms", "send message", "send a message", "send text", "send a text", "send text message", "send a text message"],
+                        "pt": ["enviar mensagem", "enviar uma mensagem"]
+                    },
+                    "function" : "sendMessage",
+                    "actions" : [
+                        {
+                            "commands" : {
+                                "en": ["send", "submit", "yes"],
+                                "pt": ["enviar", "sim", "claro"]
+                            },
+                            "function" : "submitMessage"
+                        },
+                        {
+                            "commands" : {
+                                "en": ["cancel", "no"],
+                                "pt": ["cancelar", "não"]
+                            },
+                            "function" : "cancelMessage"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
